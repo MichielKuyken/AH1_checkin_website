@@ -18,6 +18,9 @@
                 filteredData() {
                     if (!this.responsedata) return [];
                     return this.responsedata.filter(examen => examen.naam.toLowerCase().includes(this.searchQuery.toLowerCase()));
+                },
+                goToExam(examId) {
+                    window.location.href = `/examen.html?examid=${examId}`;
                 }}" x-init="getData">
                 <div class="text-center">
                     <div style="margin-top: 20px; margin-bottom: 20px;">
@@ -38,8 +41,8 @@
                     <tbody>
                         <template x-for="(examen, index) in filteredData" :key="examen.id">
                             <tr :class="index % 2 === 0 ? 'table-primary' : 'table-secondary'">
-                                <td ><a href="/examen.html?examid=${examen.id}" x-text="examen.id"></a></td>
-                                <td><a href="/examen.html?examid=${examen.id}" x-text="examen.naam"></a></td>
+                                <td><a href="#" x-on:click.prevent="goToExam(examen.id)" x-text="examen.id"></a></td>
+                                <td><a href="#" x-on:click.prevent="goToExam(examen.id)" x-text="examen.naam"></a></td>
                                 <td x-text="examen.startuur"></td>
                                 <td x-text="examen.einduur"></td>
                             </tr>
