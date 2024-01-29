@@ -28,7 +28,7 @@
                 });
 
                 // Update the content of the page with the fetched data
-                document.getElementById('examTitle').textContent = data.examid;
+                document.getElementById('examTitle').textContent = `Exam ID: ${examid}`;
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
