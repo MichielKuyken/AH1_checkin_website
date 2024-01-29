@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
     <div class="col" x-data="{
@@ -14,15 +15,15 @@
         }" x-init="getData">
             <h2>students</h2>
             <ul>
-                <template x-for="student in responsedata" :key="student.id">
-                    <li>
-                        <strong x-text="student.naam"></strong>
-                    </li>
-                </template>
-                <template x-if="!responsedata">
-                    <li>No student found</li>
-                </template>
-            </ul>
+            <template x-for="student in responsedata" :key="student.id">
+                <li>
+                    <strong x-text="student.naam"></strong>
+                </li>
+            </template>
+            <template x-if="!responsedata">
+                <li>No students found</li>
+            </template>
+        </ul>
         </div>
 </body>
 </html>    
