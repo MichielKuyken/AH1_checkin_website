@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col text-end">
                 <button type="submit" onclick="postData()">Examen Starten</button>
+                <button type="submit" onclick="postDataWithValue(1)">Post 1</button>
                 <p id="submitMessage" style="display: none;">Examen gestart</p>
             </div>
         </div>
@@ -169,6 +170,22 @@
             .then(data => {
                 console.log(data);
                 document.getElementById("submitMessage").style.display = "block";
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Function to post data with a specific value
+        function postDataWithValue(value) {
+            fetch('https://api.nas64.be/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: value })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
             })
             .catch(error => console.error('Error:', error));
         }
