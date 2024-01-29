@@ -7,8 +7,15 @@
 </head>
 
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="text-center">
+            <img src="thomasmore_logo.png" alt="Thomas More Logo" width="200">
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center;">
         <h1>Create Exam</h1>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
         <form>
             <label for="naam">Naam:</label>
             <input type="text" id="naam" name="naam"><br><br>
@@ -20,6 +27,7 @@
             <input type="time" id="einduur" name="einduur"><br><br>
             
             <input type="submit" value="Submit">
+            <button onclick="window.location.href = 'index.html';">Back to Home</button>
         </form>
         <div id="message"></div>
         <script>
