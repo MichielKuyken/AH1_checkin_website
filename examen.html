@@ -6,6 +6,14 @@
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+    <style>
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #e9ecef;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,22 +30,25 @@
                     return this.responsedata.filter(student => student.naam.toLowerCase().includes(this.searchQuery.toLowerCase()));
                 }}" x-init="getData">
                 <div class="text-center">
+                    <img src="thomasmore_logo.png" alt="Thomas More Logo" width="200">
                     <h2>students</h2>
                     <input type="text" x-model="searchQuery" placeholder="Search by name">
-                    <table class="table mx-auto text-center">
+                    <table class="table table-striped mx-auto text-center">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>UID</th>
+                            <th>R-nummer</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <template x-for="student in filteredData" :key="student.id">
-                            <tr>
+                        <template x-for="(student, index) in filteredData" :key="student.id">
+                            <tr :class="index % 2 === 0 ? 'table-primary' : 'table-secondary'">
                                 <td x-text="student.id"></td>
                                 <td x-text="student.naam"></td>
                                 <td x-text="student.uid"></td>
+                                <td x-text="student.Rnummer"></td>
                             </tr>
                         </template>
                     </tbody>
