@@ -12,13 +12,18 @@
         <div class="row">
             <div class="col" x-data="{
                 responsedata: null,
+                searchQuery: '',
                 async getData() {
                     this.responsedata = await (await fetch('https://api.nas64.be/student/')).json();
                     console.log(this.responsedata);
-                }
-            }" x-init="getData">
+                },
+                filteredData() {
+                    if (!this.responsedata) return [];
+                    return this.responsedata.filter(student => student.naam.toLowerCase().includes(this.searchQuery.toLowerCase()));
+                }}" x-init="getData">
                 <div class="text-center">
                     <h2>students</h2>
+                    <input type="text" x-model="searchQuery" placeholder="Search by name">
                     <table class="table mx-auto text-center">
                     <thead>
                         <tr>
@@ -28,16 +33,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template x-for="student in responsedata" :key="student.id">
+                        <template x-for="student in filteredData" :key="student.id">
                             <tr>
                                 <td x-text="student.id"></td>
                                 <td x-text="student.naam"></td>
                                 <td x-text="student.uid"></td>
-                            </tr>
-                        </template>
-                        <template x-if="!responsedata">
-                            <tr>
-                                <td colspan="1">No students found</td>
                             </tr>
                         </template>
                     </tbody>
