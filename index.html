@@ -38,8 +38,8 @@
                     <tbody>
                         <template x-for="(examen, index) in filteredData" :key="examen.id">
                             <tr :class="index % 2 === 0 ? 'table-primary' : 'table-secondary'">
-                                <td ><a href="/examen.html?examid=${examen.id}" x-text="examen.id"></a></td>
-                                <td><a href="/examen.html?examid=${examen.id}" x-text="examen.naam"></a></td>
+                                <td ><a x-bind:href="`/examen.html?examid=${examen.id}`" x-text="examen.id"></a></td>
+                                <td><a x-bind:href="`/examen.html?examid=${examen.id}`" x-text="examen.naam"></a></td>
                                 <td x-text="examen.startuur"></td>
                                 <td x-text="examen.einduur"></td>
                             </tr>
