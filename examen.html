@@ -8,6 +8,19 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="text-center">
+            <img src="thomasmore_logo.png" alt="Thomas More Logo" width="200">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-end">
+                <button type="submit" onclick="postData()">Examen Starten</button>
+                <p id="submitMessage" style="display: none;">Examen gestart</p>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -55,6 +68,14 @@
 
                     const row = document.createElement('tr');
                     row.innerHTML = `<td>${data3.id}</td><td>${data3.naam}</td><td>${data3.uid}</td><td>${data3.r_nummer}</td><td>${data4.incheck}</td><td>${data5.uitcheck}</td>`;
+
+                    // Add class 'table-primary' to every other row
+                    if (document.querySelectorAll('tbody.test tr').length % 2 === 0) {
+                        row.classList.add('table-primary');
+                    } else {
+                        row.classList.add('table-secondary');
+                    }
+
                     document.querySelector('tbody.test').appendChild(row);
                 }
             } catch (error) {
@@ -99,11 +120,7 @@
         </table>
     </div>
 
-    <div class="row">
-        <div class="col text-center">
-            <button type="submit" onclick="postData()">Submit</button>
-        </div>
-    </div>
+
 
     <script>
         // Function to filter table rows based on search input and checkbox state
@@ -141,7 +158,7 @@
 
         // Function to post data
         function postData() {
-            fetch('https://api.nas64.be/exam', {
+            fetch('https://api.nas64.be/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -149,7 +166,10 @@
                 body: JSON.stringify({ examId: examId })
             })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                document.getElementById("submitMessage").style.display = "block";
+            })
             .catch(error => console.error('Error:', error));
         }
     </script>
