@@ -60,7 +60,7 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        // Handle the error here
+                        document.getElementById('message').innerText = 'Exam created NOT successfully!';
                     });
                 });
             });

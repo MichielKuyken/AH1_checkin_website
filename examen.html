@@ -91,35 +91,42 @@
     </script>
     <!-- Your additional content can go here -->
 
-    <div class="row">
-        <div class="col text-center">
-            <input type="text" id="searchInput" placeholder="Search by Name">
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <input type="text" id="searchInput" placeholder="Search by Name">
+            </div>
         </div>
+    
+        <div class="row">
+            <div class="col text-center">
+                <input type="checkbox" id="undefinedCheckbox" onchange="filterTable()">
+                <label for="undefinedCheckbox">Show Not Checked In</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <table class="table table-striped mx-auto text-center">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>UID</th>
+                        <th>R-nummer</th>
+                        <th>Incheck Tijd</th>
+                        <th>Uitcheck Tijd</th>
+                    </tr>
+                    </thead>
+                    <tbody class="test">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
-    <div class="row">
-        <div class="col text-center">
-            <input type="checkbox" id="undefinedCheckbox" onchange="filterTable()">
-            <label for="undefinedCheckbox">Show Not Checked In</label>
-        </div>
-    </div>
 
-    <div class="row">
-        <table class="table table-striped mx-auto text-center">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>UID</th>
-                <th>R-nummer</th>
-                <th>Incheck Tijd</th>
-                <th>Uitcheck Tijd</th>
-            </tr>
-            </thead>
-            <tbody class="test">
-            </tbody>
-        </table>
-    </div>
 
 
 
